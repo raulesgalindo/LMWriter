@@ -22,8 +22,16 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ $file->title }}</h5>
                             <p class="card-text">
-                                <button type="button" class="btn btn-warning">Modify</button>
-                                <button type="button" class="btn btn-danger" disabled>Delete</button>
+                                <div class="row">
+                                    <form action="/updatefile">
+                                        <input type="hidden" name="id" value="{{ $file->id }}">
+                                        <input type="submit" value="Modify" class="btn btn-warning">
+                                    </form>
+                                    <form action="/deletefile">
+                                        <input type="hidden" name="id" value="{{ $file->id }}">
+                                        <input type="submit" value="Delete" class="btn btn-danger">
+                                    </form>
+                                </div>
                             </p>
                         </div>
                     </div>

@@ -18,4 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/createfile', 'FileController@index')->name('createfile');
+Route::get('/createfile', 'FileController@createFile')->name('createfile');
+Route::get('/updatefile', 'FileController@updateFile')->name('updatefile');
+Route::get('/deletefile', 'FileController@deleteFile')->name('deletefile');
+Route::post('/savefile', 'FileController@saveFile')->name('savefile');
