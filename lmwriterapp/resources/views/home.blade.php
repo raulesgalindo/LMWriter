@@ -6,7 +6,10 @@
         <div class="col-md-12 col-md-offset-1">
             <div class="panel panel-default">
                 <div class="panel-heading">Files
-                <button type="button" class="btn btn-success">++Create file</button></div>
+                    <form action="/createfile">
+                        <input type="submit" value="++Create File" class="btn btn-success">
+                    </form>
+                </div>
                 <div class="panel-body">
                     @if (session('status'))
                         <div class="alert alert-success">
@@ -33,33 +36,4 @@
         </div>
     </div>
 </div>
-<script>
- $('table[data-form="deleteForm"]').on("submit", '.form-delete',function(event){
-        event.preventDefault();
-        var $form=$(this);
-        debugger;
-        $('#confirm').modal({ backdrop: 'static', keyboard: false })
-        .on('click', '#delete-btn', function(){
-
-            // Serialize the data in the form
-            var serializedData = $form.serialize();
-            
-            request = $.ajax({
-                url: "/eliminarinvestigacion",
-                type: "post",
-                data: serializedData
-            });
-            // Callback que si todo sale bien
-            request.done(function (response, textStatus, jqXHR){
-                window.location = "/listarinvestigacion";
-            });
-        
-        
-        });
-    });
-   
-$( document ).ready(function() {
-    $('.pagination').css({'display':'inline'});
-});
-</script>
 @endsection
