@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\File;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $files = File::where('user_id', '=', Auth::user()->id)->orderBy('updated_at', 'desc')->paginate(15);
+        return view('home',['files'=>$files] );
     }
 }
