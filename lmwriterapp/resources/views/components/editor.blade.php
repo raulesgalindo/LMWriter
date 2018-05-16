@@ -1,19 +1,6 @@
-<!-- Create the toolbar container -->
-<div id="toolbar">
-<button class="ql-bold">Bold</button>
-<button class="ql-italic">Italic</button>
-</div>
-<input type="text" class="form-control" id="content" value="{{ $file->content }}">
 
+<link rel="stylesheet" href="{{ asset('css/bootstrap-markdown.min.css') }}"  />
+<textarea name="content" id="content" data-provide="markdown" rows="10">{{ $file->content }}</textarea>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="{{ asset('js/bootstrap-markdown.js') }}"></script>
 
-<!-- Main Quill library -->
-<!-- Include the Quill library -->
-<script src="https://cdn.quilljs.com/1.0.0/quill.js"></script>
-
-<!-- Initialize Quill editor -->
-<script>
-  var editor = new Quill('#content', {
-    modules: { toolbar: '#toolbar' },
-    theme: 'snow'
-  });
-</script>

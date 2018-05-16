@@ -8,7 +8,7 @@
                 <div class="panel-heading">
                         <label for="title">Created at: {{ $file->created_at }}</label> 
                         <form action="/home">
-                            <input type="submit" value="List Files" class="btn btn-info">
+                            <input type="submit" value="Return" class="btn btn-info">
                         </form>
                 </div>
                 <div class="panel-body">
@@ -24,7 +24,7 @@
                         </div>
                         <div class="form-group">
                             <label for="content">Content:</label>
-                            <input type="text" class="form-control" name="content" id="content" value="{{ $file->content }}">
+                            @include('components.editor')
                         </div>
                         <div class="form-group" >
                             <input type="submit" value="Save file" class="btn btn-info">
@@ -43,7 +43,8 @@
 $(function() { //shorthand document.ready function
     $('#saveFileForm').on('submit', function(e) { //use on if jQuery 1.7+
         e.preventDefault();  //prevent form from submitting
-        document.getElementById('gifsaving').style.visibility='visible' 
+        document.getElementById('gifsaving').style.visibility='visible'
+        document.getElementById('thumbOk').style.visibility='hidden' 
         var $form=$(this);
         var serializedData = $form.serializeArray();
         debugger;  
