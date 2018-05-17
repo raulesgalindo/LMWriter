@@ -65,5 +65,22 @@ class FileController extends Controller
         $file->tags = $request->tags;
         $file->save();
     }
+    public function findByFilter(Request $request)
+    {
+        $files;
+        if(strlen($request->filter) == 0){
+            $files = File::where('user_id', '=', Auth::user()->id)->orderBy('updated_at', 'desc')->paginate(15);
+        }else{
+            $filter = "%". $request->filter."%";
+            $files = File::where('user_id', '=', Auth::user()->id)
+            ->where(function($query) use($filter)
+                {
+                    $query->orWhere('title','like', $filter)->orWhere('tags','like', $filter)
+                    ->orWhere('created_at','like', $filter)->orWhere('updated_at','like', $filter);
+                })
+            ->orderBy('updated_at', 'desc')->paginate(15);
+        }
+        return view('components.filteredwindow',['files'=>$files] );
+    }
 
 }

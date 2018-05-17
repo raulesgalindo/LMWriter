@@ -22,3 +22,4 @@ Route::get('/createfile', 'FileController@createFile')->name('createfile');
 Route::get('/updatefile', 'FileController@updateFile')->name('updatefile');
 Route::get('/deletefile', 'FileController@deleteFile')->name('deletefile');
 Route::post('/savefile', 'FileController@saveFile')->name('savefile');
+Route::get('/findbyfilter', 'FileController@findByFilter')->name('findbyfilter');
