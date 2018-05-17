@@ -65,4 +65,5 @@ class FileController extends Controller
         $file->tags = $request->tags;
         $file->save();
     }
+
 }
